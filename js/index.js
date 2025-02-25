@@ -105,7 +105,36 @@ window.addEventListener("hashchange", function () {
   }
 });
 
-// Ensure the page starts on the #clock section
-if (!window.location.href.endsWith("#clock")) {
-  window.location.href = "#clock";
+/// Function to restart the clock animation
+function restartClockAnimation() {
+  const clockSection = document.getElementById("clock");
+  if (clockSection) {
+    // Remove all line animations
+    const lines = document.querySelectorAll('[id^="line-"]');
+    lines.forEach((line) => {
+      line.style.animation = "none";
+      line.offsetHeight; // Trigger reflow
+      line.style.animation = null;
+    });
+
+    // Restart the hover menu animation
+    const hoverMenu = document.getElementById("hover_menu");
+    if (hoverMenu) {
+      hoverMenu.style.animation = "none";
+      hoverMenu.offsetHeight; // Trigger reflow
+      hoverMenu.style.animation = null;
+    }
+  }
+}
+
+// Listen for hash changes (section navigation)
+window.addEventListener("hashchange", () => {
+  if (window.location.hash === "#clock") {
+    restartClockAnimation();
+  }
+});
+
+// Initial check on page load
+if (window.location.hash === "#clock") {
+  restartClockAnimation();
 }

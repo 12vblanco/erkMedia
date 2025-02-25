@@ -134,6 +134,34 @@ section:target h1, section:target h2 {
 }
 
 #clock { background: var(--primary-color); }
+
+/* Reset animations when clock section is shown */
+#clock:target ~ * [id^="line-"] {
+  animation: none;
+  -webkit-animation: none;
+  opacity: 0;
+}
+
+#clock:target ~ * [id^="line-"] {
+  animation: fadein 4s;
+  -webkit-animation: fadein 4s;
+  animation-play-state: running;
+  -webkit-animation-play-state: running;
+}
+
+#clock:target ~ * #hover_menu {
+  animation: none;
+  -webkit-animation: none;
+  opacity: 0;
+}
+
+#clock:target ~ * #hover_menu {
+  animation: fadein 2s;
+  -webkit-animation: fadein 4s;
+  animation-play-state: running;
+  -webkit-animation-play-state: running;
+}
+
 #about { background: var(--complimentary-color); padding: 0 4rem 0 8rem;}
 #experts {
   background: var(--contrast-color);
