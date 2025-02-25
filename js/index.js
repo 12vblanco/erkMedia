@@ -105,7 +105,15 @@ window.addEventListener("hashchange", function () {
   }
 });
 
-/// Function to restart the clock animation
+// Function to set the default section to #clock
+function setDefaultSection() {
+  if (!window.location.hash) {
+    // If no hash is present, set the hash to #clock
+    window.location.hash = "clock";
+  }
+}
+
+// Function to restart the clock animation
 function restartClockAnimation() {
   const clockSection = document.getElementById("clock");
   if (clockSection) {
@@ -127,14 +135,17 @@ function restartClockAnimation() {
   }
 }
 
-// Listen for hash changes (section navigation)
-window.addEventListener("hashchange", () => {
+// Set the default section and restart animations when the page loads
+window.addEventListener("load", () => {
+  setDefaultSection();
   if (window.location.hash === "#clock") {
     restartClockAnimation();
   }
 });
 
-// Initial check on page load
-if (window.location.hash === "#clock") {
-  restartClockAnimation();
-}
+// Restart animations when navigating to the clock section
+window.addEventListener("hashchange", () => {
+  if (window.location.hash === "#clock") {
+    restartClockAnimation();
+  }
+});
