@@ -175,3 +175,48 @@ section:target h1, section:target h2 {
 @keyframes fadeIn {
   100% { opacity: 1; }
 }
+
+
+
+@media (max-width: 460px) {
+  /* Adjust navigation bar */
+  nav {
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  nav a {
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  /* Adjust sections */
+  section {
+    position: relative;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+
+  #about, #experts, #contact {
+    padding-top: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Adjust clock text */
+  .text-clock {
+    font-size: 18px !important;
+    letter-spacing: 2px !important;
+    padding-left: 36px;
+  }
+
+  h1 {
+    font-size: 18px;
+    text-align: left;
+    top: 0;
+    width: 100%;
+  }
+}
