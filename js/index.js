@@ -88,54 +88,45 @@ function updateHour(classes) {
   $(classes).addClass("active");
 }
 
-// Update the clock every second
 setInterval(function () {
   textClock();
 }, 1000);
 
-// Reload the clock animation when #clock is visited
 window.addEventListener("hashchange", function () {
   if (window.location.hash === "#clock") {
-    // Reset the clock animation
     document.getElementById("clock").style.animation = "none";
     setTimeout(() => {
       document.getElementById("clock").style.animation =
         "clockFadeIn 1s forwards";
-    }, 10); // Small delay to ensure the animation resets
+    }, 10);
   }
 });
 
-// Function to set the default section to #clock
 function setDefaultSection() {
   if (!window.location.hash) {
-    // If no hash is present, set the hash to #clock
     window.location.hash = "clock";
   }
 }
 
-// Function to restart the clock animation
 function restartClockAnimation() {
   const clockSection = document.getElementById("clock");
   if (clockSection) {
-    // Remove all line animations
     const lines = document.querySelectorAll('[id^="line-"]');
     lines.forEach((line) => {
       line.style.animation = "none";
-      line.offsetHeight; // Trigger reflow
+      line.offsetHeight;
       line.style.animation = null;
     });
 
-    // Restart the hover menu animation
     const hoverMenu = document.getElementById("hover_menu");
     if (hoverMenu) {
       hoverMenu.style.animation = "none";
-      hoverMenu.offsetHeight; // Trigger reflow
+      hoverMenu.offsetHeight;
       hoverMenu.style.animation = null;
     }
   }
 }
 
-// Set the default section and restart animations when the page loads
 window.addEventListener("load", () => {
   setDefaultSection();
   if (window.location.hash === "#clock") {
@@ -143,7 +134,6 @@ window.addEventListener("load", () => {
   }
 });
 
-// Restart animations when navigating to the clock section
 window.addEventListener("hashchange", () => {
   if (window.location.hash === "#clock") {
     restartClockAnimation();
