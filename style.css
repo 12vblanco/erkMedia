@@ -1,3 +1,4 @@
+/* Existing CSS */
 * {
   margin: 0;
   padding: 0;
@@ -106,6 +107,7 @@ nav {
   display: none;
 }
 
+/* Sliding Effect for Sections */
 section {
   position: absolute;
   top: 0;
@@ -118,6 +120,7 @@ section {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  transform: translateX(-100%); /* Initially hidden to the left */
 }
 
 section h1, section h2 {
@@ -127,6 +130,7 @@ section h1, section h2 {
 section:target {
   opacity: 1;
   z-index: 10;
+  transform: translateX(0); /* Slide in from the left */
 }
 
 section:target h1, section:target h2 {
@@ -176,8 +180,6 @@ section:target h1, section:target h2 {
   100% { opacity: 1; }
 }
 
-
-
 @media (max-width: 460px) {
   /* Adjust navigation bar */
   nav {
@@ -220,7 +222,6 @@ section:target h1, section:target h2 {
     width: 100%;
   }
 }
-
 
 #experts {
   background: var(--contrast-color);
