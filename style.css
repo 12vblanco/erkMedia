@@ -228,7 +228,6 @@ section:target .experts-text, section:target .about-text, section:target .contac
 }
 
 .experts-text {
-  font-size: 20px;
   padding-left: 85px;
   opacity: 0;
   animation: 2s fadeIn forwards 0.5s;
@@ -239,13 +238,32 @@ section:target .experts-text, section:target .about-text, section:target .contac
 
 .contact-text {
   color: ghostwhite;
-  font-size: 40px;
-  text-transform: lowercase;
   padding-top: 6rem;
   opacity: 0;
   animation: 2s fadeIn forwards 0.5s;
   text-align: center;
 }
+
+.about-text p,
+.experts-text p,
+.contact-text p {
+  margin-bottom: 1.5rem; 
+  letter-spacing: normal;
+  font-size: 20px;
+  color: ghostwhite;
+  text-transform: lowercase;
+}
+
+.contact-text p{
+  font-size: 40px;
+  text-align: left;
+}
+
+ .about-text p:first-child,
+.experts-text p:first-child,
+.contact-text p:first-child {
+  margin-top: 0;
+} 
 
 @media (max-width: 460px) {
 
@@ -261,6 +279,5 @@ section:target .experts-text, section:target .about-text, section:target .contac
 
   .about-text{
     padding-left: 0;
-
   }
 }
