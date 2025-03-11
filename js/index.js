@@ -303,18 +303,45 @@ function textClock() {
   }
 
   var minsSecs = minutes + seconds;
+  var displayHour = hours;
 
-  // For times after half past, we're approaching the next hour
-  var isApproachingNextHour = minsSecs > 3230;
-
-  // Convert 24h to 12h format
-  var displayHour = hours % 12;
-  if (displayHour === 0) displayHour = 12;
-
-  // If we're approaching the next hour, increment
-  if (isApproachingNextHour) {
-    displayHour = (displayHour % 12) + 1;
-    if (displayHour === 13) displayHour = 1;
+  // Special case for 12 PM with times after half past
+  if (hours === 12 && minsSecs > 3230) {
+    displayHour = 1; // Explicitly set to 1 for times like 12:45
+  }
+  // Handle PM hours (except 12 PM which was handled above)
+  else if (hours > 12) {
+    displayHour = hours - 12;
+    // Increment for "to" times
+    if (minsSecs > 3230) {
+      displayHour++;
+      // Handle rollover from 11:45 PM to midnight
+      if (displayHour > 12) {
+        displayHour = 0;
+      }
+    }
+  }
+  // Handle AM hours including midnight (0)
+  else {
+    // For midnight specifically
+    if (hours === 0) {
+      // For times after half past midnight
+      if (minsSecs > 3230) {
+        displayHour = 1;
+      } else {
+        displayHour = 0; // Keep as midnight
+      }
+    }
+    // For all other AM hours
+    else {
+      if (minsSecs > 3230) {
+        displayHour++;
+        // Handle rollover from 11:45 AM to 12 PM
+        if (displayHour > 12) {
+          displayHour = 1;
+        }
+      }
+    }
   }
 
   if (day == 5) {
