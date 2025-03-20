@@ -1,25 +1,13 @@
 function textClock() {
-  // Replace this line:
   var newDate = new Date();
-
-  // With a fixed date and time for testing:
-  // var newDate = new Date("2023-10-01T11:55:00"); // 11:55 AM
-  //var newDate = new Date("2023-10-01T24:00:01"); // 12:01 PM
-  // var newDate = new Date("2023-10-01T12:55:00"); // 12:55 PM
-  // var newDate = new Date("2023-10-01T13:03:00"); // 1:03 PM
-  // var newDate = new Date("2023-10-01T23:45:00"); // 11:45 PM
-  //var newDate = new Date("2023-10-01T00:15:00"); // 12:15 AM
-  // var newDate = new Date("2023-10-01T00:45:00"); // 12:45 AM
 
   var day = newDate.getDay(),
     hours = newDate.getHours(),
     minutes = newDate.getMinutes().toString(),
     seconds = newDate.getSeconds().toString();
 
-  // Convert 24-hour format to 12-hour format
-  var twelveHourFormat = hours % 12 || 12; // Converts 0 to 12 for midnight
+  var twelveHourFormat = hours % 12 || 12;
 
-  // Fix minutes and seconds to always be two digits
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
@@ -29,14 +17,12 @@ function textClock() {
 
   var minsSecs = minutes + seconds;
 
-  // Handle special cases for midnight and noon
   if (hours === 0 && minsSecs >= 0 && minsSecs < 230) {
     twelveHourFormat = 24; // Midnight
   } else if (hours === 12 && minsSecs >= 0 && minsSecs < 230) {
     twelveHourFormat = 12; // Noon
   }
 
-  // Adjust the hour for times past 30 minutes
   if (minsSecs >= 3230) {
     twelveHourFormat = (twelveHourFormat % 12) + 1;
     if (twelveHourFormat === 13) {
@@ -44,12 +30,10 @@ function textClock() {
     }
   }
 
-  // Handle TGIF display
   if (day == 5) {
     $("#tgif").html("TGIF");
   }
 
-  // Map hours to their corresponding elements
   var hoursObj = {
     1: "#one",
     2: "#two",
@@ -68,7 +52,6 @@ function textClock() {
 
   updateHour(hoursObj[twelveHourFormat]);
 
-  // Update the description based on the time
   if (
     (minsSecs >= 5730 && minsSecs < 6000) ||
     (minsSecs >= 0 && minsSecs < 230)
