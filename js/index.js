@@ -188,3 +188,99 @@ window.addEventListener("hashchange", () => {
     restartClockAnimation();
   }
 });
+
+// EXPERT PROFILES
+function loadExperts() {
+  // Fetch expert data from JSON file
+  fetch("experts.json")
+    .then((response) => {
+      // Check if request was successful
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((experts) => {
+      const container = document.getElementById("experts-container");
+
+      // Clear any existing placeholder content
+      container.innerHTML = "";
+
+      // Create a card for each expert
+      experts.forEach((expert) => {
+        // Create card container
+        const expertCard = document.createElement("div");
+        expertCard.className = "expert-card";
+
+        // Create left column (image + name/title)
+        const imageContainer = document.createElement("div");
+        imageContainer.className = "expert-image-container";
+
+        // Create profile image
+        const expertImg = document.createElement("img");
+        expertImg.src = `images/${expert.image}`;
+        expertImg.alt = `${expert.name}`;
+        expertImg.className = "expert-image";
+
+        // Create name/title container
+        const expertInfo = document.createElement("div");
+        expertInfo.className = "expert-info";
+
+        // Create name element
+        const expertName = document.createElement("h3");
+        expertName.className = "expert-name";
+        expertName.textContent = expert.name;
+
+        // Create title element
+        const expertTitle = document.createElement("p");
+        expertTitle.className = "expert-title";
+        expertTitle.textContent = expert.title;
+
+        // Create right column (bio)
+        const expertBio = document.createElement("div");
+        expertBio.className = "expert-bio";
+
+        // Create bio paragraph
+        const bioText = document.createElement("p");
+        bioText.textContent = expert.bio;
+
+        // Assemble the DOM structure
+        expertInfo.appendChild(expertName);
+        expertInfo.appendChild(expertTitle);
+
+        imageContainer.appendChild(expertImg);
+        imageContainer.appendChild(expertInfo);
+
+        expertBio.appendChild(bioText);
+
+        expertCard.appendChild(imageContainer);
+        expertCard.appendChild(expertBio);
+
+        // Add card to container
+        container.appendChild(expertCard);
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading experts:", error);
+
+      // Fallback content if JSON fails to load
+      const container = document.getElementById("experts-container");
+      container.innerHTML = `
+        <div class="expert-card">
+          <div class="expert-image-container">
+            <img src="images/placeholder.jpg" alt="Placeholder" class="expert-image">
+            <div class="expert-info">
+              <h3 class="expert-name">Expert Name</h3>
+              <p class="expert-title">Expert Title</p>
+            </div>
+          </div>
+          <div class="expert-bio">
+            <p>Expert bio will appear here. This is placeholder text that will be replaced when the experts data loads properly.</p>
+          </div>
+        </div>
+      `;
+    });
+}
+
+// Load experts when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", loadExperts);
