@@ -370,3 +370,79 @@ section:target .experts-text, section:target .about-text, section:target .contac
     padding-left: 0;
   }
 }
+
+/* cookie consent styles */
+/* Cookie Consent */
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: ghostwhite;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
+  border-top: 1px solid #333;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.cookie-consent.show {
+  transform: translateY(0);
+}
+
+.cookie-consent p {
+  color: ghostwhite;
+  font-size: 14px;
+  margin-bottom: 15px;
+  letter-spacing: normal;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.cookie-consent-button {
+  background: transparent;
+  border: 1px solid ghostwhite;
+  color: ghostwhite;
+  padding: 8px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Krub, Helvetica, Arial;
+  /* text-transform: lowercase; */
+}
+
+.cookie-consent-button:hover {
+  background: ghostwhite;
+  color: #000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+@media (max-width: 460px) {
+  .cookie-consent {
+    padding: 15px;
+  }
+  
+  .cookie-consent p {
+    font-size: 12px;
+  }
+}
