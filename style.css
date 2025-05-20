@@ -602,3 +602,55 @@ section:target {
     padding: 1rem;
   }
 }
+
+
+/* privacy Section */
+#privacy:target {
+  opacity: 1;
+  z-index: 10;
+  transform: translateX(0); 
+}
+
+.fa-arrow-left {
+  margin-right: 8px;
+}
+
+section {
+  z-index: 1;
+}
+
+section:target {
+  z-index: 10;
+}
+
+#privacy .contact-text {
+  max-width: 800px;
+  text-align: left;
+  margin-left: 120px;
+  padding-right: 2rem;
+}
+
+#privacy h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: ghostwhite;
+}
+
+#privacy h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+  color: ghostwhite;
+}
+
+#privacy p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: ghostwhite;
+}
+
+@media (max-width: 768px) {
+  #privacy .contact-text {
+    padding: 1rem;
+  }
+}

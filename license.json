@@ -26,5 +26,24 @@
       }
     ],
     "footer": "By using this website, you agree to be bound by the terms of this License Agreement."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "effectiveDate": "2023-11-15",
+    "sections": [
+      {
+        "title": "1. Lorem ipsum",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula."
+      },
+      {
+        "title": "2. Lorem ipsum",
+        "content": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      },
+      {
+        "title": "3. Lorem ipsum",
+        "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat."
+      }
+    ],
+    "footer": "This privacy policy was last updated on November 15, 2023."
   }
 }

@@ -344,8 +344,71 @@ function loadLicenseContent() {
     });
 }
 
-// Load experts & license when the DOM is fully loaded
+function loadPrivacyContent() {
+  fetch("license.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const privacySection = document.getElementById("privacy");
+      const privacyContainer = privacySection.querySelector(".contact-text");
+
+      // Clear existing content
+      privacyContainer.innerHTML = "";
+
+      // Create and append title
+      const title = document.createElement("h3");
+      title.textContent = data.privacy.title;
+      title.style.fontSize = "2rem";
+      title.style.marginBottom = "2rem";
+      title.style.textTransform = "lowercase";
+      privacyContainer.appendChild(title);
+
+      // Create and append sections
+      data.privacy.sections.forEach((section) => {
+        const sectionTitle = document.createElement("h3");
+        sectionTitle.textContent = section.title;
+        sectionTitle.style.textTransform = "lowercase";
+        sectionTitle.style.margin = "1.5rem 0 0.5rem";
+        privacyContainer.appendChild(sectionTitle);
+
+        const sectionContent = document.createElement("p");
+        sectionContent.textContent = section.content;
+        sectionContent.style.marginBottom = "1rem";
+        privacyContainer.appendChild(sectionContent);
+      });
+
+      // Add footer
+      const footer = document.createElement("p");
+      footer.textContent = data.privacy.footer;
+      footer.style.marginTop = "2rem";
+      footer.style.fontStyle = "italic";
+      privacyContainer.appendChild(footer);
+
+      // Add back arrow
+      const backArrow = document.createElement("a");
+      backArrow.href = "#contact";
+      backArrow.className = "contact-text";
+      backArrow.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
+      backArrow.style.display = "block";
+      backArrow.style.marginTop = "1rem";
+      backArrow.style.marginLeft = "90%";
+      privacyContainer.appendChild(backArrow);
+    })
+    .catch((error) => {
+      console.error("Error loading privacy content:", error);
+      // Fallback content for error loading
+      const privacyContainer = document
+        .getElementById("privacy")
+        .querySelector(".contact-text");
+      privacyContainer.innerHTML = `
+        <p>privacy information failed to load.</p>
+        <a href="#contact" class="contact-text"><i class="fas fa-arrow-left"></i></a>
+      `;
+    });
+}
+
+// Load experts & privacy when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
+  loadPrivacyContent();
   loadLicenseContent();
-  document.addEventListener("DOMContentLoaded", loadExperts);
+  loadExperts();
 });
