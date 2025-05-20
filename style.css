@@ -140,7 +140,7 @@ nav {
   display: none;
 }
 
-section {
+section{
   padding-top: 1rem;
   position: absolute;
   top: 0;
@@ -343,9 +343,10 @@ section:target .experts-text, section:target .about-text, section:target .contac
   text-transform: lowercase;
 }
 
-.contact-text p {
+.contact-text p, .contact-text a {
   font-size: 40px;
   text-align: left;
+  text-decoration: none;
 }
 
 .about-text p:first-child,
@@ -547,5 +548,57 @@ section:target .experts-text, section:target .about-text, section:target .contac
   .expert-image {
     width: 120px;
     height: 120px;
+  }
+}
+
+
+/* License Section */
+#license:target {
+  opacity: 1;
+  z-index: 10;
+  transform: translateX(0); 
+}
+
+.fa-arrow-left {
+  margin-right: 8px;
+}
+
+section {
+  z-index: 1;
+}
+
+section:target {
+  z-index: 10;
+}
+
+#license .contact-text {
+  max-width: 800px;
+  text-align: left;
+  margin-left: 120px;
+  padding-right: 2rem;
+}
+
+#license h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: ghostwhite;
+}
+
+#license h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+  color: ghostwhite;
+}
+
+#license p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: ghostwhite;
+}
+
+@media (max-width: 768px) {
+  #license .contact-text {
+    padding: 1rem;
   }
 }

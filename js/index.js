@@ -282,5 +282,70 @@ function loadExperts() {
     });
 }
 
-// Load experts when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", loadExperts);
+function loadLicenseContent() {
+  fetch("license.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const licenseSection = document.getElementById("license");
+      const licenseContainer = licenseSection.querySelector(".contact-text");
+
+      // Clear existing content
+      licenseContainer.innerHTML = "";
+
+      // Create and append title
+      const title = document.createElement("h3");
+      title.textContent = data.license.title;
+      title.style.fontSize = "2rem";
+      title.style.marginBottom = "2rem";
+      title.style.textTransform = "lowercase";
+      licenseContainer.appendChild(title);
+
+      // Create and append sections
+      data.license.sections.forEach((section) => {
+        const sectionTitle = document.createElement("h3");
+        sectionTitle.textContent = section.title;
+        sectionTitle.style.textTransform = "lowercase";
+        sectionTitle.style.margin = "1.5rem 0 0.5rem";
+        licenseContainer.appendChild(sectionTitle);
+
+        const sectionContent = document.createElement("p");
+        sectionContent.textContent = section.content;
+        sectionContent.style.marginBottom = "1rem";
+        licenseContainer.appendChild(sectionContent);
+      });
+
+      // Add footer
+      const footer = document.createElement("p");
+      footer.textContent = data.license.footer;
+      footer.style.marginTop = "2rem";
+      footer.style.fontStyle = "italic";
+      licenseContainer.appendChild(footer);
+
+      // Add back arrow
+      const backArrow = document.createElement("a");
+      backArrow.href = "#contact";
+      backArrow.className = "contact-text";
+      backArrow.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
+      backArrow.style.display = "block";
+      backArrow.style.marginTop = "1rem";
+      backArrow.style.marginLeft = "90%";
+      licenseContainer.appendChild(backArrow);
+    })
+    .catch((error) => {
+      console.error("Error loading license content:", error);
+      // Fallback content for error loading
+      const licenseContainer = document
+        .getElementById("license")
+        .querySelector(".contact-text");
+      licenseContainer.innerHTML = `
+        <p>License information failed to load.</p>
+        <a href="#contact" class="contact-text"><i class="fas fa-arrow-left"></i></a>
+      `;
+    });
+}
+
+// Load experts & license when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  loadLicenseContent();
+  document.addEventListener("DOMContentLoaded", loadExperts);
+});
