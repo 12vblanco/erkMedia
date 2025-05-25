@@ -294,18 +294,15 @@ function loadLicenseContent() {
 
       // Create and append title
       const title = document.createElement("h3");
+      title.className = "terms-title";
       title.textContent = data.license.title;
-      title.style.fontSize = "2rem";
-      title.style.marginBottom = "2rem";
-      title.style.textTransform = "lowercase";
       licenseContainer.appendChild(title);
 
       // Create and append sections
       data.license.sections.forEach((section) => {
-        const sectionTitle = document.createElement("h3");
+        const sectionTitle = document.createElement("h4");
         sectionTitle.textContent = section.title;
-        sectionTitle.style.textTransform = "lowercase";
-        sectionTitle.style.margin = "1.5rem 0 0.5rem";
+        sectionTitle.className = "section-title";
         licenseContainer.appendChild(sectionTitle);
 
         const sectionContent = document.createElement("p");
@@ -315,20 +312,16 @@ function loadLicenseContent() {
       });
 
       // Add footer
-      const footer = document.createElement("p");
-      footer.textContent = data.license.footer;
-      footer.style.marginTop = "2rem";
-      footer.style.fontStyle = "italic";
-      licenseContainer.appendChild(footer);
+      const licenseFooter = document.createElement("p");
+      licenseFooter.className = "footer-text";
+      licenseFooter.textContent = data.license.footer;
+      licenseContainer.appendChild(licenseFooter);
 
       // Add back arrow
       const backArrow = document.createElement("a");
       backArrow.href = "#contact";
-      backArrow.className = "contact-text";
+      backArrow.className = "back-arrow";
       backArrow.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-      backArrow.style.display = "block";
-      backArrow.style.marginTop = "1rem";
-      backArrow.style.marginLeft = "90%";
       licenseContainer.appendChild(backArrow);
     })
     .catch((error) => {
@@ -356,18 +349,15 @@ function loadPrivacyContent() {
 
       // Create and append title
       const title = document.createElement("h3");
+      title.className = "terms-title";
       title.textContent = data.privacy.title;
-      title.style.fontSize = "2rem";
-      title.style.marginBottom = "2rem";
-      title.style.textTransform = "lowercase";
       privacyContainer.appendChild(title);
 
       // Create and append sections
       data.privacy.sections.forEach((section) => {
-        const sectionTitle = document.createElement("h3");
+        const sectionTitle = document.createElement("h4");
+        sectionTitle.className = "section-title";
         sectionTitle.textContent = section.title;
-        sectionTitle.style.textTransform = "lowercase";
-        sectionTitle.style.margin = "1.5rem 0 0.5rem";
         privacyContainer.appendChild(sectionTitle);
 
         const sectionContent = document.createElement("p");
@@ -377,20 +367,17 @@ function loadPrivacyContent() {
       });
 
       // Add footer
-      const footer = document.createElement("p");
-      footer.textContent = data.privacy.footer;
-      footer.style.marginTop = "2rem";
-      footer.style.fontStyle = "italic";
-      privacyContainer.appendChild(footer);
+      const privacyFooter = document.createElement("p");
+      privacyFooter.className = "footer-text";
+      privacyFooter.textContent = data.privacy.footer;
+      privacyContainer.appendChild(privacyFooter);
 
       // Add back arrow
       const backArrow = document.createElement("a");
       backArrow.href = "#contact";
-      backArrow.className = "contact-text";
+      backArrow.className = "back-arrow";
       backArrow.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-      backArrow.style.display = "block";
-      backArrow.style.marginTop = "1rem";
-      backArrow.style.marginLeft = "90%";
+
       privacyContainer.appendChild(backArrow);
     })
     .catch((error) => {
