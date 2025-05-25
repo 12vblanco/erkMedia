@@ -1,5 +1,6 @@
 // ===== COOKIE CONSENT SECTION =====
 // This handles the cookie notification popup at the bottom of the page
+// once dismissed the cookie consent can be seen again deleting the local storage
 document.addEventListener("DOMContentLoaded", function () {
   // Get the elements we need from the page
   const cookieConsent = document.getElementById("cookieConsent");
