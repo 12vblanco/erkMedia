@@ -505,6 +505,13 @@ section:target .contact-text {
   cursor: pointer;                 /* Hand cursor on hover */
   transition: all 0.3s ease;      /* Smooth hover effect */
   font-family: Krub, Helvetica, Arial;
+  margin: 1rem 2rem;
+  min-width: 165px;
+}
+
+.rejected {
+  color: ghostwhite;
+  font-size: 10px;
 }
 
 /* Button hover effect */
@@ -733,3 +740,15 @@ section:target .contact-text {
 }
 
 
+/* Adjust cookie consent text for mobile */
+@media (max-width: 460px) {
+  .cookie-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .cookie-consent-button,
+  .cookie-reject-button {
+    width: 100%;
+  }
+}

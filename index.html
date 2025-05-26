@@ -242,10 +242,18 @@
       Your privacy is respected here.
     </p>
 
-    <!-- Accept button -->
-    <button class="cookie-consent-button" id="cookieAccept" aria-label="Accept cookie policy and close this message">
-      I understand
-    </button>
+    <!-- Button container -->
+    <div class="cookie-buttons">
+      <!-- Accept button -->
+      <button class="cookie-consent-button" id="cookieAccept" aria-label="Accept cookie policy and close this message">
+        I understand <span class="rejected"><br />dismiss popup</span>
+      </button>
+
+      <!-- New reject button -->
+      <button class="cookie-consent-button" id="cookieReject" aria-label="Reject cookie storage and continue">
+        I reject this <span class="rejected"><br />this popup will show again</span>
+      </button>
+    </div>
   </div>
 
   <!-- 

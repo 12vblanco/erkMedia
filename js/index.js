@@ -28,6 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Allow page scrolling again
     document.body.style.overflow = "";
   });
+
+  // When user clicks "I reject" button
+  cookieReject.addEventListener("click", function () {
+    //I had to include this because this flag was appearing from cache? I will remove later on
+    localStorage.removeItem("GDPR_REMOVAL_FLAG");
+    // Hide the popup
+    cookieConsent.classList.remove("show");
+    cookieOverlay.classList.remove("show");
+    // Allow page scrolling again
+    document.body.style.overflow = "";
+  });
 });
 
 // ===== WORD CLOCK SECTION =====
