@@ -512,6 +512,7 @@ section:target .contact-text {
 .btn-underline {
   color: ghostwhite;
   font-size: 10px;
+    margin-top: -12px;
 }
 
 /* Button hover effect */
