@@ -509,7 +509,7 @@ section:target .contact-text {
   min-width: 165px;
 }
 
-.rejected {
+.btn-underline {
   color: ghostwhite;
   font-size: 10px;
 }
