@@ -505,7 +505,7 @@ section:target .contact-text {
   cursor: pointer;                 /* Hand cursor on hover */
   transition: all 0.3s ease;      /* Smooth hover effect */
   font-family: Krub, Helvetica, Arial;
-  margin: 1rem 2rem;
+  margin: 1rem;
   min-width: 177px;
 }
 
